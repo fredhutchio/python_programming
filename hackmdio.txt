@@ -1,0 +1,38 @@
+Introduction to Python
+====
+
+URL to this page: XXX
+
+**Sign in to each class meeting** [here](XXX)
+
+Have you installed [[required software]]? Instructions [here](http://www.fredhutch.io/software/)
+
+This page is for easy access to links we'll use during class. You don't need to do anything with this information until directed by your instructor. Links to the instructor's script will be added as the course progresses.
+
+If you have feedback about this course, please
+[comment here](XXX)
+
+Complete class notes [here](https://github.com/fredhutchio/python_intro)
+
+**Week 1: [[title]]**
+* Instructor's script (note: you will need to download this script and put in your project directory)
+  * [Weekday](XXX)
+
+**Week 2: [[title]]**
+* Instructor's script (note: you will need to download this script and put in your project directory)
+  * [Weekday](XXX)
+
+**Week 3: [[title]]**
+* Instructor's script (note: you will need to download this script and put in your project directory)
+  * [Weekday](XXX)
+
+**Week 4: [[title]]**
+* Instructor's script (note: you will need to download this script and put in your project directory)
+  * [Weekday](XXX)
+
+**Resources for continued learning**
+* [[additional courses]] from fredhutch.io
+* fredhutch.io holds office hours [[at these times]]
+* [The Coop](https://centernet.fredhutch.org/cn/u/bdsc.html): a centralized hub for data science at Fred Hutch
+* [FHBig](https://fredhutch.github.io/FHBig/): community-focused events and Slack channel
+* [Fred Hutch Biomedical Data Science Wiki](https://sciwiki.fredhutch.org): community-contributed resource for data management, bioinformatics, and computing
