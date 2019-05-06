@@ -2,8 +2,7 @@
 
 ## Description
 
-Description: This [[# classes/weeks]] course is designed to introduce attendees to [[main objectives]]
-Each [[length of session]] class meeting will include brief tutorials interspersed with challenge exercises, and assumes [[prerequisites]]. At the end of this course, you will be able to [[main deliverables]].
+Description: This four-week course focuses on task automation using Python programming. Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes participants are familiar with all material in Introduction to Python (working in Jupyter notebooks, basic syntax including variables and functions, importing data, data types and structures, subsetting data). At the end of this course, you will be able to create fully documented and automated workflows to perform data analysis tasks. Note: this course is still being pilot tested.
 
 [[links to other materials that have been adapted in this lesson]]
 
@@ -12,10 +11,10 @@ Software requirements for this course can be found on [fredhutch.io's Software p
 
 ## Schedule
 
-* Week 1: [[title]]
-* Week 2: [[title]]
-* Week 3: [[title]]
-* Week 4: [[title]]
+* Week 1: Review of pre-requisites, repeating actions with loops
+* Week 2: Analyzing data from multiple files, conditional statements, creating functions
+* Week 3: Errors and exceptions, defensive programming
+* Week 4: Debugging, modules/packaging for reproducibility
 
 
 ## Resources
