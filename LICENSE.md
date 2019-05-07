@@ -1,5 +1,13 @@
 # LICENSE
 
+This repository is adapted from content originally appearing in 
+[Programming with Python](http://swcarpentry.github.io/python-novice-inflammation/),
+Copyright (c) Software Carpentry. The main distinction from the original materials 
+is the reorganization of the lessons and distribution of content. 
+The full text of their licensing agreement is below.
+
+### Instructional Material
+
 All Software Carpentry, Data Carpentry, and Library Carpentry instructional material is
 made available under the [Creative Commons Attribution
 license][cc-by-human]. The following is a human-readable summary of
