@@ -35,11 +35,11 @@ import numpy
 # download data
 urllib.request.urlretrieve("http://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip", "python-novice-inflammation-data.zip")
 # unzip data
-zipData = zipfile.ZipFile('python-novice-inflammation-data.zip')
+zipData = zipfile.ZipFile("python-novice-inflammation-data.zip")
 zipData.extractall()
 
 # assign data to variable (so we can recall it later)
-data = numpy.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 
 # what is in the variable?
 print(data)
@@ -175,7 +175,7 @@ filenames = filenames[0:3]
 for f in filenames:
     print(f)
 
-    data = numpy.loadtxt(fname=f, delimiter=',')
+    data = numpy.loadtxt(fname=f, delimiter=",")
 
     fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
 
@@ -183,13 +183,13 @@ for f in filenames:
     axes2 = fig.add_subplot(1, 3, 2)
     axes3 = fig.add_subplot(1, 3, 3)
 
-    axes1.set_ylabel('average')
+    axes1.set_ylabel("average")
     axes1.plot(numpy.mean(data, axis=0))
 
-    axes2.set_ylabel('max')
+    axes2.set_ylabel("max")
     axes2.plot(numpy.max(data, axis=0))
 
-    axes3.set_ylabel('min')
+    axes3.set_ylabel("min")
     axes3.plot(numpy.min(data, axis=0))
 
     fig.tight_layout()
@@ -200,14 +200,14 @@ import glob
 import numpy
 import matplotlib.pyplot
 
-filenames = sorted(glob.glob('data/inflammation*.csv'))
+filenames = sorted(glob.glob("data/inflammation*.csv"))
 
-data0 = numpy.loadtxt(fname=filenames[0], delimiter=',')
-data1 = numpy.loadtxt(fname=filenames[1], delimiter=',')
+data0 = numpy.loadtxt(fname=filenames[0], delimiter=",")
+data1 = numpy.loadtxt(fname=filenames[1], delimiter=",")
 
 fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
 
-matplotlib.pyplot.ylabel('Difference in average')
+matplotlib.pyplot.ylabel("Difference in average")
 matplotlib.pyplot.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
 
 fig.tight_layout()
@@ -218,5 +218,5 @@ matplotlib.pyplot.show()
 # make sure work is saved
 # review how to get back into work
 # review objectives
-# preview next week's objectives
+# preview next week"s objectives
 # remind to sign in
