@@ -1,4 +1,4 @@
-#### [[course and class]] ####
+#### Intermediate Python: Programming ####
 
 #### Before class ####
 
@@ -9,16 +9,17 @@
 
 # instructor introduction
 # overview of fredhutch.io
-# sign in
-# learner introductions and motivation
 # overview course philosophy, how to stay engaged
-# pre-requisites:
-# course objectives:
+# pre-requisites: intro to Python (basic syntax including variables and functions, importing data, data types and structures, subsetting data)
+# learner introductions and motivation
+# sign in
+# course objectives: create fully documented and automated workflows to perform data analysis tasks (loops, conditionals, functions, debugging)
 
 #### Objectives ####
 
 # Today:
-#
+# review: loading data, assigning to variable, basic python syntax
+# numpy: arrays, subsetting, summary stats, 
 
 #### Review of pre-requisites and loading data ####
 
