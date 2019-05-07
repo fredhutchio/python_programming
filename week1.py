@@ -195,6 +195,24 @@ for f in filenames:
     fig.tight_layout()
     matplotlib.pyplot.show()
 
+## Challenge: Plot the difference between the average of the first dataset and the average of the second dataset, i.e., the difference between the leftmost plot of the first two figures.
+import glob
+import numpy
+import matplotlib.pyplot
+
+filenames = sorted(glob.glob('data/inflammation*.csv'))
+
+data0 = numpy.loadtxt(fname=filenames[0], delimiter=',')
+data1 = numpy.loadtxt(fname=filenames[1], delimiter=',')
+
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+matplotlib.pyplot.ylabel('Difference in average')
+matplotlib.pyplot.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
+
+fig.tight_layout()
+matplotlib.pyplot.show()
+
 #### Wrapping up ####
 
 # make sure work is saved
