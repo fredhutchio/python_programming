@@ -4,7 +4,7 @@
 
 Description: This four-week course focuses on task automation using Python programming. Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes participants are familiar with all material in Introduction to Python (working in Jupyter notebooks, basic syntax including variables and functions, importing data, data types and structures, subsetting data). At the end of this course, you will be able to create fully documented and automated workflows to perform data analysis tasks. Note: this course is still being pilot tested.
 
-[[links to other materials that have been adapted in this lesson]]
+These materials are based largely on Software Carpentry's [Programming with Python](http://swcarpentry.github.io/python-novice-inflammation/ materials), Copyright (c) Software Carpentry.
 
 Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/).
 
