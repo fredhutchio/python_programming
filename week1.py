@@ -111,11 +111,89 @@ ave_inflammation = numpy.mean(data, axis=0)
 matplotlib.pyplot.plot(ave_inflammation)
 
 ## Challenge: using one line of code, print the maximum inflammation across all patients
-max_plot = matplotlib.pyplot.plot(numpy.max(data, axis=0))
+matplotlib.pyplot.plot(numpy.max(data, axis=0))
 
 #### Repeating actions with loops ####
 
+# what if we wanted to repeat plotting across all data files? how many lines of code would it take given the methods used so far?
 
+# there are multiple ways to show what is contained in a variable
+# create a variable for a word
+word = "hutchinson"
+word
+word[0]
+word[7]
+# what if we change word?
+word = "hutch"
+word[0]
+#word[7] # index error: there is no index 7 in word now!
+
+# for loop: accesses items in a set
+for char in word: # need to execute on top line of for loop in some interpreters!
+    print(char) # have to include print statement for values to appear!
+# repeats action AND is not length dependent
+
+# importing multiple data files
+import glob
+
+glob.glob("data/inflammation*.csv")
+
+# create a list of files (* is a wildcard)
+filenames = sorted(glob.glob("data/inflammation*.csv")) # sorted to make filenames appear in numerical order
+filenames
+
+# loop across all filenames
+for f in filenames:
+    print(f)
+
+## Challenge: Are all 12 data files the same shape? (hint: write a for loop)
+for f in filenames:
+    data = numpy.loadtxt(fname = f, delimiter = ",")
+    print("shape of", f, ":", data.shape) # more informative print statement
+
+# plot average inflammation for each file in a separate plot
+import numpy
+import matplotlib
+
+filenames = sorted(glob.glob("data/inflammation*.csv"))
+for f in filenames:
+    print(f)
+
+    data = numpy.loadtxt(fname=f, delimiter=",")
+
+    fig_ave = numpy.mean(data, axis=0)
+    ave_plot = matplotlib.pyplot.plot(fig_ave)
+    matplotlib.pyplot.show() # why is this necessary?
+
+## Challenge: Write a comment for each line of code in the following script. Which data files are suspicious?
+import glob
+import numpy
+import matplotlib.pyplot
+
+filenames = sorted(glob.glob("data/inflammation*.csv"))
+filenames = filenames[0:3]
+for f in filenames:
+    print(f)
+
+    data = numpy.loadtxt(fname=f, delimiter=',')
+
+    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+    axes1 = fig.add_subplot(1, 3, 1)
+    axes2 = fig.add_subplot(1, 3, 2)
+    axes3 = fig.add_subplot(1, 3, 3)
+
+    axes1.set_ylabel('average')
+    axes1.plot(numpy.mean(data, axis=0))
+
+    axes2.set_ylabel('max')
+    axes2.plot(numpy.max(data, axis=0))
+
+    axes3.set_ylabel('min')
+    axes3.plot(numpy.min(data, axis=0))
+
+    fig.tight_layout()
+    matplotlib.pyplot.show()
 
 #### Wrapping up ####
 
