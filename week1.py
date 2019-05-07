@@ -18,8 +18,11 @@
 #### Objectives ####
 
 # Today:
-# review: loading data, assigning to variable, basic python syntax
-# numpy: arrays, subsetting, summary stats, 
+#   review: loading data, assigning to variable, basic python syntax
+#   numpy: arrays, subsetting, summary stats
+#   plotting with matplotlib
+#   working with mutliple files
+#   for loops to repeat tasks
 
 #### Review of pre-requisites and loading data ####
 
