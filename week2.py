@@ -77,7 +77,7 @@ if numpy.sum(numpy.min(data, axis=0)) == 0:
     print("Minima add up to zero!")
 
 # combine together and test on another data file
-data = numpy.loadtxt(fname="inflammation-03.csv", delimiter=",")
+data = numpy.loadtxt(fname="data/inflammation-03.csv", delimiter=",")
 
 max_inflammation_0 = numpy.max(data, axis=0)[0]
 max_inflammation_20 = numpy.max(data, axis=0)[20]
@@ -170,12 +170,14 @@ def detect_problems(filename):
         print("Seems OK!")
 
 # use both functions across all files in for loop
-filenames = sorted(glob.glob("inflammation*.csv"))
+filenames = sorted(glob.glob("data/inflammation*.csv"))
 
 for f in filenames[:3]:
     print(f)
     analyze(f)
     detect_problems(f)
+
+## Challenge:
 
 #### Wrapping up ####
 
