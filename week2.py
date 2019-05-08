@@ -51,11 +51,11 @@ if (1 < 0) or (-1 < 0):
 
 ## Challenge: Given the following code, what answer do you expect to be correct?
 if 4 > 5:
-    print('A')
+    print("A")
 elif 4 == 5:
-    print('B')
+    print("B")
 elif 4 < 5:
-    print('C')
+    print("C")
 ## How would you rewrite the code to get another answer?
 # C gets printed because the first two conditions, 4 > 5 and 4 == 5, are not true, but 4 < 5 is true.
 
@@ -101,6 +101,81 @@ for char in sentence:
         count += 1
 
 print("The number of vowels in this string is " + str(count))
+
+#### Creating functions ####
+
+# define a function that converts F to C
+def fahr_to_celsius(temp):
+    return ((temp - 32) * (5/9))
+# why can"t you print the result instead of return?
+# return function causes function to stop
+
+# test function
+fahr_to_celsius(32)
+
+# test function with meaningful print statements
+print("freezing point of water:", fahr_to_celsius(32), "C")
+print("boiling point of water:", fahr_to_celsius(212), "C")
+
+# convert C to K by composing functions: to apply one function to the result of another
+def celsius_to_kelvin(temp_c):
+    return temp_c + 273.15
+
+print("freezing point of water in Kelvin:", celsius_to_kelvin(0.))
+
+# converting F to K
+def fahr_to_kelvin(temp_f):
+    temp_c = fahr_to_celsius(temp_f)
+    temp_k = celsius_to_kelvin(temp_c)
+    return temp_k
+
+print("boiling point of water in Kelvin:", fahr_to_kelvin(212.0))
+
+## Challenge:
+
+# create function to analyze files with data viz
+def analyze(filename):
+
+    data = numpy.loadtxt(fname=filename, delimiter=",")
+
+    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+    axes1 = fig.add_subplot(1, 3, 1)
+    axes2 = fig.add_subplot(1, 3, 2)
+    axes3 = fig.add_subplot(1, 3, 3)
+
+    axes1.set_ylabel("average")
+    axes1.plot(numpy.mean(data, axis=0))
+
+    axes2.set_ylabel("max")
+    axes2.plot(numpy.max(data, axis=0))
+
+    axes3.set_ylabel("min")
+    axes3.plot(numpy.min(data, axis=0))
+
+    fig.tight_layout()
+    matplotlib.pyplot.show()
+# why don"t we need to include a return statement?
+
+# create function to detect data errors
+def detect_problems(filename):
+
+    data = numpy.loadtxt(fname=filename, delimiter=",")
+
+    if numpy.max(data, axis=0)[0] == 0 and numpy.max(data, axis=0)[20] == 20:
+        print("Suspicious looking maxima!")
+    elif numpy.sum(numpy.min(data, axis=0)) == 0:
+        print("Minima add up to zero!")
+    else:
+        print("Seems OK!")
+
+# use both functions across all files in for loop
+filenames = sorted(glob.glob("inflammation*.csv"))
+
+for f in filenames[:3]:
+    print(f)
+    analyze(f)
+    detect_problems(f)
 
 #### Wrapping up ####
 
