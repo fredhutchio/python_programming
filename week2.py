@@ -60,7 +60,9 @@ elif 4 < 5:
 # C gets printed because the first two conditions, 4 > 5 and 4 == 5, are not true, but 4 < 5 is true.
 
 # checking for problems in inflammation data
+import glob
 import numpy
+import matplotlib.pyplot
 
 data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 
@@ -131,7 +133,31 @@ def fahr_to_kelvin(temp_f):
 
 print("boiling point of water in Kelvin:", fahr_to_kelvin(212.0))
 
-## Challenge:
+## Challenge: You can "add" strings together using +, such as:
+"a" + "b"
+## Write a function called fence that takes two parameters called original and wrapper and returns a new string that has the wrapper character at the beginning and end of the original. A call to your function should look like this:
+# input: print(fence('name', '*'))
+# output: *name*
+def fence(original, wrapper):
+    return wrapper + original + wrapper
+
+## Challenge: If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
+def outer(input_string):
+    return input_string[0] + input_string[-1]
+
+## Challenge: What does the following piece of code display when run — and why?
+f = 0
+k = 0
+
+def f2k(f):
+    k = ((f-32)*(5.0/9.0)) + 273.15
+    return k
+
+f2k(8)
+f2k(41)
+f2k(32)
+
+print(k)
 
 # create function to analyze files with data viz
 def analyze(filename):
