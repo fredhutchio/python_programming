@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #### Intermediate Python: Programming ####
 
 #### Before class ####
