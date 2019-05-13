@@ -11,19 +11,39 @@
 #   defining defaults for a function
 #   applying readable code convention to functions
 
+## Challenge: what will be printed if you run this code?
+a = 3
+b = 7
+
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
+
+swap(a, b)
+
+print(a, b)
+## Challenge: how could you alter this to print the results of swap?
 
 #### Testing and documenting ####
 
-# write a function to offset data (allows to test functions)
+# validating that a function works as expected is an important step in coding
+# this section creates a new function that manipulates the data
+
+import numpy
+
+# write a function to offset data by a new user-selected mean value
 def offset_mean(data, target_mean_value):
     return (data - numpy.mean(data)) + target_mean_value
 
-# create test matrix of 0s and offset values using new function (to test it)
+# create test matrix of 0s
 z = numpy.zeros((2,2))
+print(z)
+# offset values using new function
 print(offset_mean(z, 3))
 
 # use offset function on real data
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 print(offset_mean(data, 0))
 
 # confirm offset has worked
@@ -41,7 +61,12 @@ print('std dev before and after:', numpy.std(data), numpy.std(offset_data))
 print('difference in standard deviations before and after:',
       numpy.std(data) - numpy.std(offset_data))
 
-# we could add documentation to offset function to describe its purpose using comments
+# we could add documentation to offset function to describe its purpose using comments:
+
+# offset_mean(data, target_mean_value)
+# return a new array containing the original data with its mean offset to match the desired value.
+def offset_mean(data, target_mean_value):
+    return (data - numpy.mean(data)) + target_mean_value
 
 # a better way: add string to function itself, which embeds in help documentation
 def offset_mean(data, target_mean_value):
@@ -60,15 +85,17 @@ def offset_mean(data, target_mean_value):
     return (data - numpy.mean(data)) + target_mean_value
 help(offset_mean)
 
-## Challenge:
+## Challenge: given the following function (written in last week's class), add a docstring
+def fahr_to_celsius(temp):
+    return ((temp - 32) * (5/9))
 
 #### Defining defaults ####
 
 # pass the filename to loadtxt without the fname=
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-numpy.loadtxt('inflammation-01.csv', delimiter=',')
-# delimiter needs to be there!
-numpy.loadtxt('inflammation-01.csv', ',')
+numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
+numpy.loadtxt("data/inflammation-01.csv", delimiter=",")
+# delimiter needs to be there! this gives an error:
+numpy.loadtxt("inflammation-01.csv", ",")
 
 # redefine offset mean, which makes the default 0.0
 def offset_mean(data, target_mean_value=0.0):
@@ -83,10 +110,8 @@ print(offset_mean(test_data, 3))
 
 # call it with just one parameter, target_mean_value automatically assigned the default value of 0.0
 more_data = 5 + numpy.zeros((2, 2))
-print('data before mean offset:')
-print(more_data)
-print('offset data:')
-print(offset_mean(more_data))
+print('data before mean offset:', more_data)
+print('offset data:', offset_mean(more_data))
 
 # how Python matches values to parameters:
 def display(a=1, b=2, c=3):
@@ -99,17 +124,34 @@ display(55)
 print('two parameters:')
 display(55, 66)
 
-# override behavior by naming value as it's passed
+# parameters are matched left to right
+# any without value given by user automatically get default value
+
+# override behavior by naming value as it's passed (entered)
 print('only setting the value of c')
 display(c=77)
 
-# interpreting help documentation
+# interpreting help documentation: example from numpy.loadtxt
 help(numpy.loadtxt)
 # loadtxt has one parameter called fname that doesn’t have a default value, and eight others that do
 # numpy.loadtxt('inflammation-01.csv', ',')
 # doesn't work because delimiter isn't the second argument in the help doc, so the function assigns the wrong default argument
 
-## Challenge:
+## Challenge: given the following code, what do you expect to be written? Run it to confirm your answer
+def numbers(one, two=2, three, four=4):
+    n = str(one) + str(two) + str(three) + str(four)
+    return n
+
+print(numbers(1, three=3))
+# answer: one must be defined as an input since it does not have a default value
+
+## Challenge: what does the following code display when run?
+def func(a, b=3, c=6):
+    print('a: ', a, 'b: ', b, 'c:', c)
+
+func(-1, 2)
+
+# answer: a: -1 b: 2 c: 6
 
 #### Readable functions ####
 
@@ -144,21 +186,7 @@ def std_dev(sample):
 #   meaningful variable names
 #   blank spaces
 
-## Challenge: What does the following piece of code display when run — and why?
-f = 0
-k = 0
-
-def f2k(f):
-    k = ((f-32)*(5.0/9.0)) + 273.15
-    return k
-
-f2k(8)
-f2k(41)
-f2k(32)
-
-print(k)
-
-## Revise a function you wrote for one of the previous exercises to try to make the code more readable. Then, collaborate with one of your neighbors to critique each other’s functions and discuss how your function implementations could be further improved to make them more readable.
+## Challenge: Revise a function you wrote for one of the previous exercises to try to make the code more readable. Then, collaborate with one of your neighbors to critique each other’s functions and discuss how your function implementations could be further improved to make them more readable.
 
 #### Wrapping up ####
 
