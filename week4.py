@@ -4,11 +4,12 @@
 
 # review previous week's objectives
 # Today:
-#
+#   identify types of errors as reported by python
+#   correct errors reported in Python
 
 #### Errors and Exceptions ####
 
-# example traceback
+# example traceback: execute all at once
 def favorite_ice_cream():
     ice_creams = [
         "chocolate",
@@ -19,11 +20,43 @@ def favorite_ice_cream():
 
 favorite_ice_cream()
 
-#syntax errors
-# colon
-#indentation
+# interpreting traceback:
+#   determine number of levels by looking for arrows on lefthand side
+#   first arrow points to line 8, favorite_ice_cream()
+#   second arrow shows code within function, line 6
+#   last level shown is where error occurred
+#   most of the time you can pay attention to last level!
 
-# variable name errors
+# three main types of errors
+
+#### syntax errors
+
+# error from defining a function incorrectly
+def some_function()
+    msg = "hello, world!"
+    print(msg)
+     return msg
+# colon error: add colon to first line
+def some_function():
+    msg = "hello, world!"
+    print(msg)
+     return msg
+# another error! IntentationError is a type of syntax, but is always about indentation
+# correct indentation:
+def some_function():
+    msg = "hello, world!"
+    print(msg)
+    return msg
+# whitespace: tabs and spaces
+# many interpreters correct spaces meant to be tabs, but python doesn't allow you to mix!
+
+#### variable name errors
+
+# try to print a variable
+print(octopus)
+# NameErrors can be difficult to fix
+# common problem is that it's not a variable, but a string you forgot to place quotations around
+
 
 # index errors
 
