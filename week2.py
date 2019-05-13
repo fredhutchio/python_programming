@@ -4,12 +4,14 @@
 
 #### Objectives ####
 
-# review previous week"s objectives
+# review previous week's objectives
 # Today:
 #   make choices using conditional statements: if, elif, else
 #   evaluate expressions containing and and or
 #   combine for loops and conditional statements
 #   create functions
+
+# link to materials with diagram and full text of exercises: http://swcarpentry.github.io/python-novice-inflammation/06-func/index.html
 
 #### Making choices ####
 
@@ -143,9 +145,7 @@ print("boiling point of water in Kelvin:", fahr_to_kelvin(212.0))
 def fence(original, wrapper):
     return wrapper + original + wrapper
 
-## Challenge: If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
-def outer(input_string):
-    return input_string[0] + input_string[-1]
+print(fence("name", "*"))
 
 ## Challenge: What does the following piece of code display when run — and why?
 f = 0
@@ -183,7 +183,7 @@ def analyze(filename):
 
     fig.tight_layout()
     matplotlib.pyplot.show()
-# why don"t we need to include a return statement?
+# why don't we need to include a return statement?
 
 # create function to detect data errors
 def detect_problems(filename):
@@ -205,9 +205,13 @@ for f in filenames[:3]:
     analyze(f)
     detect_problems(f)
 
-## Challenge:
+## Challenge: If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
+def outer(input_string):
+    return input_string[0] + input_string[-1]
+
+print(outer("helium"))
 
 #### Wrapping up ####
 
 # review objectives
-# preview next week"s objectives
+# preview next week's objectives
