@@ -29,7 +29,7 @@ favorite_ice_cream()
 
 # three main types of errors
 
-#### syntax errors
+## Syntax errors
 
 # error from defining a function incorrectly
 def some_function()
@@ -50,17 +50,55 @@ def some_function():
 # whitespace: tabs and spaces
 # many interpreters correct spaces meant to be tabs, but python doesn't allow you to mix!
 
-#### variable name errors
+## Variable name errors
 
 # try to print a variable
 print(octopus)
 # NameErrors can be difficult to fix
 # common problem is that it's not a variable, but a string you forgot to place quotations around
+print("octopus")
+# another problem: forgot to create variable before using it:
+#count = 0 # add this to fix it
+for number in range(10):
+    count = count + number
+print("The count is:", count)
+# if you accidentally include Count = 0 instead, this will also give variable name error!
 
+## Index errors
+# accessing an item in a container that doesn't exist
+letters = ['a', 'b', 'c']
+print("Letter #1 is", letters[0])
+print("Letter #2 is", letters[1])
+print("Letter #3 is", letters[2])
+print("Letter #4 is", letters[3])
 
-# index errors
+## File errors
 
-# file errors
+# trying to read a file that doesn't exist, or is in a different location
+file_handle = open('myfile.txt')
+file_handle = open("inflammation-01.csv", 'r')
+# attempt to write to a file that was opened read-only: UnsupportedOperationError
+# also IOErrors or OSErrors, depending on the version of Python
+
+## Challenge:
+# This code has an intentional error. Do not type it directly;
+# use it for reference to understand the error message below.
+def print_message(day):
+    messages = {
+        "monday": "Hello, world!",
+        "tuesday": "Today is tuesday!",
+        "wednesday": "It is the middle of the week.",
+        "thursday": "Today is Donnerstag in German!",
+        "friday": "Last day of the week!",
+        "saturday": "Hooray for the weekend!",
+        "sunday": "Aw, the weekend is almost over."
+    }
+    print(messages[day])
+
+def print_friday_message():
+    print_message("Friday")
+
+print_friday_message()
 
 #### Defensive programming ####
 
