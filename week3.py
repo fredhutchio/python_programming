@@ -29,6 +29,9 @@ print(a, b)
 
 # validating that a function works as expected is an important step in coding
 # this section creates a new function that manipulates the data
+# difference between testing (verification) and validating:
+#   testing/verifying: does code do what we expect?
+#   validating: does code meet our need (stated goal)?
 
 import numpy
 
@@ -95,7 +98,7 @@ def fahr_to_celsius(temp):
 numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 numpy.loadtxt("data/inflammation-01.csv", delimiter=",")
 # delimiter needs to be there! this gives an error:
-numpy.loadtxt("inflammation-01.csv", ",")
+numpy.loadtxt("data/inflammation-01.csv", ",")
 
 # redefine offset mean, which makes the default 0.0
 def offset_mean(data, target_mean_value=0.0):
