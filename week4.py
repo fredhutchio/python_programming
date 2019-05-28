@@ -154,13 +154,87 @@ def range_overlap(ranges):
 
 # overview practices
 
+# know what program is supposed to do
+# writing test cases for scientific software is frequently harder than writing test cases for commercial applications, because if we knew what the output of the scientific code was supposed to be, we wouldn’t be running the software: we’d be writing up our results and moving on to the next program
+# in practice:
+#   Test with simplified data
+#   Test a simplified case
+#   Compare to an oracle (something which has trusted results)
+#   Check conservation laws
+#   Visualize
+
+# find a test case that makes it fail every time
+#   make it fail fast: localize failure to specific place in code
+
+# change one thing at a time, for a reason
+#   keep track of what you've done (lab notebook, notes, or ideally version control)
+
+# be humble: learn from mistakes, and ask for help
+#   a week of hard work can sometimes save you an hour of thought
+
 ## Challenge: pair up, introduce error, try to debug with applying principles
 
 #### Command-line programs ####
 
-# switch to command line
-# download code file: http://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-code.zip
+# download code file: http://swcarpentry.github.io/python-novice-inflammation/code/python-novice-inflammation-code.zip
+#   can do this by clicking on link and downloading zip, unzipping, moving code/ to project directory
+#   using python code:
+import os
+import urllib.request
+import zipfile
+urllib.request.urlretrieve("http://swcarpentry.github.io/python-novice-inflammation/code/python-novice-inflammation-code.zip", "python-novice-inflammation-code.zip")
+zipData = zipfile.ZipFile("python-novice-inflammation-code.zip")
+zipData.extractall()
+# this directory contains example scripts for us to use in exploring how command-line python programs work
 
+# intro to command line: how many folks have experience on command line (Unix/bash)
+# differences between interpreter (Atom or Jupyter notebook) and command line
+#   interpreter directly interacts with python code
+#   command line accesses bash/unix commands and programs
+# demo running python from other interfaces
+# accessing command line:
+#   Mac: terminal
+#   Windows: Anaconda prompt
+#   alternatively, run all commands from interpreter with ! in front, which indicates the following is a command line, rather than interpreted by python
+
+# print average inflammation per patient for a given file
+!python code/readings_04.py --mean data/inflammation-01.csv
+
+# look at the minimum of first four lines
+!head -4 data/inflammation-01.csv | python code/readings_06.py --min
+
+# max inflammation of several files
+python code/readings_04.py --max data/inflammation-*.csv
+
+# Our scripts should do the following:
+#   If no filename is given on the command line, read data from standard input.
+#   If one or more filenames are given, read data from them and report statistics for each file separately.
+#   Use the --min, --mean, or --max flag to determine what statistic to print.
+
+# create a new text file (in text editor) called sys_version.py
+import sys # import system library
+print('version is', sys.version) # tell us what version of python we're running
+
+# run program
+!python sys_version.py
+#!python code//sys_version.py # in teaching materials
+
+# another file called argv_list.py
+import sys
+print('sys.argv is', sys.argv)
+
+# run program
+!python argv_list.py
+#!python code/argv_list.py # in teaching materials
+# run with multiple arguments
+!python argv_list.py first second third
+#!python code/argv_list.py first second third
+
+# exporting Jupyter notebooks as script
+#   can use drop down menu, but may not preserve line breaks
+# add the following code to cell in notebook (at end)
+#!jupyter nbconvert --to script name_of_notebook.ipynb
+# can also run code in Anaconda prompt (without ! )
 
 #### Wrapping up ####
 
