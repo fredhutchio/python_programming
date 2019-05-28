@@ -78,6 +78,8 @@ print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) )) # assertion triggered by rect
 #   desired output is range of time they all overlap
 # diagram: http://swcarpentry.github.io/python-novice-inflammation/08-defensive/index.html
 
+# we're going to work through the process of defining and testing a function, while pretending to encounter some of the common errors associated with this process
+
 # normal tendency is to do:
 #   Write a function range_overlap.
 #   Call it interactively on two or three different inputs.
@@ -86,6 +88,67 @@ print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) )) # assertion triggered by rect
 #   Write a short function for each test.
 #   Write a range_overlap function that should pass those tests.
 #   If range_overlap produces any wrong answers, fix it and re-run the test functions.
+
+# three test functions for range_overlap:
+assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0) # one input
+assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0) # two inputs
+assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0) # three inputs
+# errors are expected! we haven't written the function yet; if tests passed we'd be accidentally using someone else's function
+# this implicitly defines what our input and output look like: a list of pairs as input, and produce a single pair as output
+
+# how to test for cases where ranges don't overlap at all?
+assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == ???
+# fail with an error message, produce a special value like (0.0, 0.0) to signal that there’s no overlap, or something else?
+# decision: we will return the special value None when there’s no overlap
+
+# what about when ranges touch at endpoints?
+assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == ???
+# is this overlap?
+# decision: every overlap has to have non-zero width
+
+# complete previous assertions
+assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
+assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
+
+# define function:
+def range_overlap(ranges):
+    '''Return common overlap among a set of [left, right] ranges.'''
+    max_left = 0.0
+    min_right = 1.0
+    for (left, right) in ranges:
+        max_left = max(max_left, left)
+        min_right = min(min_right, right)
+    return (max_left, min_right)
+
+# add assertions to test function
+def test_range_overlap():
+    assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
+    assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
+    assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
+    assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
+    assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
+    assert range_overlap([]) == None
+
+# finally test the function call
+test_range_overlap()
+# first test to produce None fails, we need to correct our function
+# we don't know if other tests failed, because the program halts with the first error
+# initializing max_left and min_right to 0.0 and 1.0 respectively, regardless of the input values
+# another rule of programming: always initialize from data
+
+## Challenge: Fix range_overlap. Re-run test_range_overlap after each change you make.
+def range_overlap(ranges):
+    '''Return common overlap among a set of [left, right] ranges.'''
+    if not ranges:
+        # ranges is None or an empty list
+        return None
+    max_left, min_right = ranges[0]
+    for (left, right) in ranges[1:]:
+        max_left = max(max_left, left)
+        min_right = min(min_right, right)
+    if max_left >= min_right:  # no overlap
+        return None
+    return (max_left, min_right)
 
 #### Debugging ####
 
