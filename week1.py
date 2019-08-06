@@ -107,7 +107,6 @@ print(np.mean(data, axis=1))
 
 #### Visualizing data ####
 
-import matplotlib.pyplot as plt
 %matplotlib inline # for notebooks
 image = plt.imshow(data) # im is image, 2D raster
 plt.show() # not always needed; shortcut allowed because of interface/interpreter
@@ -187,8 +186,6 @@ for f in filenames:
     print("shape of", f, ":", data.shape) # more informative print statement
 
 # plot average inflammation for each file in a separate plot
-import numpy
-import matplotlib
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 for f in filenames:
@@ -201,9 +198,6 @@ for f in filenames:
     plt.show() # why is this necessary?
 
 ## Challenge: Add comments to explain the code in exercises/week1_example2.py. Which data files are suspicious?
-import glob
-import numpy as np
-import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 filenames = filenames[0:3]
@@ -231,9 +225,6 @@ for f in filenames:
     plt.show()
 
 ## Challenge: Plot the difference between the average of the first dataset and the average of the second dataset, i.e., the difference between the leftmost plot of the first two figures.
-import glob
-import numpy as np
-import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 
