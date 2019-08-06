@@ -32,7 +32,7 @@
 import os
 import urllib.request
 import zipfile
-import numpy
+import numpy as np
 
 # download data
 urllib.request.urlretrieve("http://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip", "python-novice-inflammation-data.zip")
@@ -41,7 +41,7 @@ zipData = zipfile.ZipFile("python-novice-inflammation-data.zip")
 zipData.extractall()
 
 # assign data to variable (so we can recall it later)
-data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
+data = np.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 
 # what is in the variable?
 print(data)
@@ -57,7 +57,7 @@ data.shape
 # arrays have members, or attributes, which use the dot nomenclature because they have the same part-and-whole relationship
 
 ## Challenge: import small-01.csv and determine if the type or shape of data differ from data object
-small_data = numpy.loadtxt(fname="data/small-01.csv", delimiter=",")
+small_data = np.loadtxt(fname="data/small-01.csv", delimiter=",")
 print(small_data.shape)
 print(small_data.dtype)
 type(small_data)
@@ -83,37 +83,42 @@ tripledata = doubledata + data
 tripledata[0:4, 0:10]
 
 # perform summaries across entire array
-print(numpy.mean(data))
+print(np.mean(data))
 
 ## Challenge: find max, min, standard deviation across the entire array data, and print with meaningful print statements
-print("maximum:", numpy.max(data))
-print("minimum:", numpy.min(data))
-print("standard deviation:", numpy.std(data))
+print("maximum:", np.max(data))
+print("minimum:", np.min(data))
+print("standard deviation:", np.std(data))
 
 # multiple assignment: assign multiple variables at a once
-maxval, minval, stdval = numpy.max(data), numpy.min(data), numpy.std(data)
+maxval, minval, stdval = np.max(data), np.min(data), np.std(data)
 print(stdval)
 
-# specify a certain axis to summarize (0 means rows, summarize by day)
-numpy.mean(data, axis=0)
+# print max inflammation for one patient
+print('maximum inflammation for patient 2:', np.max(data[2, :]))
+
+# calculate max inflammation for each patient over all days or all patients
+# average inflammation for each day over all patients (0 means rows)
+np.mean(data, axis=0)
 # check shape of output
-numpy.mean(data, axis=0).shape # 40 values, this is number of days
-# axis = 1 this summarizes across patients
+print(np.mean(data, axis=0).shape) # 40 values, this is number of days
+# average inflammation for each patient over all days: axis = 1
+print(np.mean(data, axis=1))
 
 #### Visualizing data ####
 
 import matplotlib.pyplot as plt
-%matplotlib inline
+%matplotlib inline # for notebooks
 image = plt.imshow(data) # im is image, 2D raster
 plt.show() # not always needed; shortcut allowed because of interface/interpreter
 plt.imshow(data) # another shortcut!
 
 # plot inflammation over time as average across all patients
-ave_inflammation = numpy.mean(data, axis=0)
+ave_inflammation = np.mean(data, axis=0)
 plt.plot(ave_inflammation)
 
 ## Challenge: using one line of code, print the maximum inflammation across all patients
-plt.plot(numpy.max(data, axis=0))
+plt.plot(np.max(data, axis=0))
 
 #### Repeating actions with loops ####
 
@@ -150,7 +155,7 @@ for f in filenames:
 
 ## Challenge: Are all 12 data files the same shape? (hint: write a for loop)
 for f in filenames:
-    data = numpy.loadtxt(fname = f, delimiter = ",")
+    data = np.loadtxt(fname = f, delimiter = ",")
     print("shape of", f, ":", data.shape) # more informative print statement
 
 # plot average inflammation for each file in a separate plot
@@ -161,9 +166,9 @@ filenames = sorted(glob.glob("data/inflammation*.csv"))
 for f in filenames:
     print(f)
 
-    data = numpy.loadtxt(fname=f, delimiter=",")
+    data = np.loadtxt(fname=f, delimiter=",")
 
-    fig_ave = numpy.mean(data, axis=0)
+    fig_ave = np.mean(data, axis=0)
     ave_plot = plt.plot(fig_ave)
     plt.show() # why is this necessary?
 
@@ -177,7 +182,7 @@ filenames = filenames[0:3]
 for f in filenames:
     print(f)
 
-    data = numpy.loadtxt(fname=f, delimiter=",")
+    data = np.loadtxt(fname=f, delimiter=",")
 
     fig = plt.figure(figsize=(10.0, 3.0))
 
@@ -186,13 +191,13 @@ for f in filenames:
     axes3 = fig.add_subplot(1, 3, 3)
 
     axes1.set_ylabel("average")
-    axes1.plot(numpy.mean(data, axis=0))
+    axes1.plot(np.mean(data, axis=0))
 
     axes2.set_ylabel("max")
-    axes2.plot(numpy.max(data, axis=0))
+    axes2.plot(np.max(data, axis=0))
 
     axes3.set_ylabel("min")
-    axes3.plot(numpy.min(data, axis=0))
+    axes3.plot(np.min(data, axis=0))
 
     fig.tight_layout()
     plt.show()
@@ -204,13 +209,13 @@ import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 
-data0 = numpy.loadtxt(fname=filenames[0], delimiter=",")
-data1 = numpy.loadtxt(fname=filenames[1], delimiter=",")
+data0 = np.loadtxt(fname=filenames[0], delimiter=",")
+data1 = np.loadtxt(fname=filenames[1], delimiter=",")
 
 fig = plt.figure(figsize=(10.0, 3.0))
 
 plt.ylabel("Difference in average")
-plt.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
+plt.plot(np.mean(data0, axis=0) - np.mean(data1, axis=0))
 
 fig.tight_layout()
 plt.show()
