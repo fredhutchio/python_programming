@@ -65,32 +65,32 @@ elif 4 < 5:
 
 # checking for problems in inflammation data
 import glob
-import numpy
-import matplotlib.pyplot
+import numpy as np
+import matplotlib.pyplot as plt
 
-data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
+data = np.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 
 # find max for two days in the study
-max_inflammation_0 = numpy.max(data, axis=0)[0]
-max_inflammation_20 = numpy.max(data, axis=0)[20]
+max_inflammation_0 = np.max(data, axis=0)[0]
+max_inflammation_20 = np.max(data, axis=0)[20]
 
 # check if max equals day number (indicating error in data entry)
 if max_inflammation_0 == 0 and max_inflammation_20 == 20:
     print("Suspicious looking maxima!")
 
 # check if any patients are have zero total inflammation (healthy patient)
-if numpy.sum(numpy.min(data, axis=0)) == 0:
+if np.sum(np.min(data, axis=0)) == 0:
     print("Minima add up to zero!")
 
 # combine together and test on another data file
-data = numpy.loadtxt(fname="data/inflammation-03.csv", delimiter=",")
+data = np.loadtxt(fname="data/inflammation-03.csv", delimiter=",")
 
-max_inflammation_0 = numpy.max(data, axis=0)[0]
-max_inflammation_20 = numpy.max(data, axis=0)[20]
+max_inflammation_0 = np.max(data, axis=0)[0]
+max_inflammation_20 = np.max(data, axis=0)[20]
 
 if max_inflammation_0 == 0 and max_inflammation_20 == 20:
     print("Suspicious looking maxima!")
-elif numpy.sum(numpy.min(data, axis=0)) == 0:
+elif np.sum(np.min(data, axis=0)) == 0:
     print("Minima add up to zero!")
 else:
     print("Seems OK!")
@@ -164,35 +164,35 @@ print(k)
 # create function to analyze files with data viz
 def analyze(filename):
 
-    data = numpy.loadtxt(fname=filename, delimiter=",")
+    data = np.loadtxt(fname=filename, delimiter=",")
 
-    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+    fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
     axes2 = fig.add_subplot(1, 3, 2)
     axes3 = fig.add_subplot(1, 3, 3)
 
     axes1.set_ylabel("average")
-    axes1.plot(numpy.mean(data, axis=0))
+    axes1.plot(np.mean(data, axis=0))
 
     axes2.set_ylabel("max")
-    axes2.plot(numpy.max(data, axis=0))
+    axes2.plot(np.max(data, axis=0))
 
     axes3.set_ylabel("min")
-    axes3.plot(numpy.min(data, axis=0))
+    axes3.plot(np.min(data, axis=0))
 
     fig.tight_layout()
-    matplotlib.pyplot.show()
+    plt.show()
 # why don't we need to include a return statement?
 
 # create function to detect data errors
 def detect_problems(filename):
 
-    data = numpy.loadtxt(fname=filename, delimiter=",")
+    data = np.loadtxt(fname=filename, delimiter=",")
 
-    if numpy.max(data, axis=0)[0] == 0 and numpy.max(data, axis=0)[20] == 20:
+    if np.max(data, axis=0)[0] == 0 and np.max(data, axis=0)[20] == 20:
         print("Suspicious looking maxima!")
-    elif numpy.sum(numpy.min(data, axis=0)) == 0:
+    elif np.sum(np.min(data, axis=0)) == 0:
         print("Minima add up to zero!")
     else:
         print("Seems OK!")

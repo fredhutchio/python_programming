@@ -174,7 +174,7 @@ for f in filenames:
 
 ## Challenge: Add comments to explain the code in exercises/week1_example.py. Which data files are suspicious?
 import glob
-import numpy
+import numpy as np
 import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
@@ -204,7 +204,7 @@ for f in filenames:
 
 ## Challenge: Plot the difference between the average of the first dataset and the average of the second dataset, i.e., the difference between the leftmost plot of the first two figures.
 import glob
-import numpy
+import numpy as np
 import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))

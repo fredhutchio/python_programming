@@ -34,49 +34,49 @@ print(a, b)
 #   testing/verifying: does code do what we expect?
 #   validating: does code meet our need (stated goal)?
 
-import numpy
+import numpy as np
 
 # write a function to offset data by a new user-selected mean value
 def offset_mean(data, target_mean_value):
-    return (data - numpy.mean(data)) + target_mean_value
+    return (data - np.mean(data)) + target_mean_value
 
 # create test matrix of 0s
-z = numpy.zeros((2,2))
+z = np.zeros((2,2))
 print(z)
 # offset values using new function
 print(offset_mean(z, 3))
 
 # use offset function on real data
-data = numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
+data = np.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 print(offset_mean(data, 0))
 
 # confirm offset has worked
-print('original min, mean, and max are:', numpy.min(data), numpy.mean(data), numpy.max(data))
+print('original min, mean, and max are:', np.min(data), np.mean(data), np.max(data))
 offset_data = offset_mean(data, 0)
 print('min, mean, and max of offset data are:',
-      numpy.min(offset_data),
-      numpy.mean(offset_data),
-      numpy.max(offset_data))
+      np.min(offset_data),
+      np.mean(offset_data),
+      np.max(offset_data))
 # offset isn't exact, but is close
 
 # check standard deviation
-print('std dev before and after:', numpy.std(data), numpy.std(offset_data))
+print('std dev before and after:', np.std(data), np.std(offset_data))
 # check more precisely
 print('difference in standard deviations before and after:',
-      numpy.std(data) - numpy.std(offset_data))
+      np.std(data) - np.std(offset_data))
 
 # we could add documentation to offset function to describe its purpose using comments:
 
 # offset_mean(data, target_mean_value)
 # return a new array containing the original data with its mean offset to match the desired value.
 def offset_mean(data, target_mean_value):
-    return (data - numpy.mean(data)) + target_mean_value
+    return (data - np.mean(data)) + target_mean_value
 
 # a better way: add string to function itself, which embeds in help documentation
 def offset_mean(data, target_mean_value):
     '''Return a new array containing the original data
        with its mean offset to match the desired value.'''
-    return (data - numpy.mean(data)) + target_mean_value
+    return (data - np.mean(data)) + target_mean_value
 
 # view help documentation
 help(offset_mean)
@@ -86,7 +86,7 @@ def offset_mean(data, target_mean_value):
     '''Return a new array containing the original data
        with its mean offset to match the desired value.
     Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
-    return (data - numpy.mean(data)) + target_mean_value
+    return (data - np.mean(data)) + target_mean_value
 help(offset_mean)
 
 ## Challenge: given the following function (written in last week's class), add a docstring
@@ -96,24 +96,24 @@ def fahr_to_celsius(temp):
 #### Defining defaults ####
 
 # pass the filename to loadtxt without the fname=
-numpy.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
-numpy.loadtxt("data/inflammation-01.csv", delimiter=",")
+np.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
+np.loadtxt("data/inflammation-01.csv", delimiter=",")
 # delimiter needs to be there! this gives an error:
-numpy.loadtxt("data/inflammation-01.csv", ",")
+np.loadtxt("data/inflammation-01.csv", ",")
 
 # redefine offset mean, which makes the default 0.0
 def offset_mean(data, target_mean_value=0.0):
     '''Return a new array containing the original data with its mean offset to match the
        desired value (0 by default).
     Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
-    return (data - numpy.mean(data)) + target_mean_value
+    return (data - np.mean(data)) + target_mean_value
 
 # can still call function with two arguments
-test_data = numpy.zeros((2, 2))
+test_data = np.zeros((2, 2))
 print(offset_mean(test_data, 3))
 
 # call it with just one parameter, target_mean_value automatically assigned the default value of 0.0
-more_data = 5 + numpy.zeros((2, 2))
+more_data = 5 + np.zeros((2, 2))
 print('data before mean offset:', more_data)
 print('offset data:', offset_mean(more_data))
 
@@ -135,10 +135,10 @@ display(55, 66)
 print('only setting the value of c')
 display(c=77)
 
-# interpreting help documentation: example from numpy.loadtxt
-help(numpy.loadtxt)
+# interpreting help documentation: example from np.loadtxt
+help(np.loadtxt)
 # loadtxt has one parameter called fname that doesn’t have a default value, and eight others that do
-# numpy.loadtxt('inflammation-01.csv', ',')
+# np.loadtxt('inflammation-01.csv', ',')
 # doesn't work because delimiter isn't the second argument in the help doc, so the function assigns the wrong default argument
 
 ## Challenge: given the following code, what do you expect to be written? Run it to confirm your answer
@@ -170,7 +170,7 @@ def s(p):
     d=0
     for v in p:
         d+=(v-m)*(v-m)
-    return numpy.sqrt(d/(len(p)-1))
+    return np.sqrt(d/(len(p)-1))
 
 # Example 2
 def std_dev(sample):
@@ -184,7 +184,7 @@ def std_dev(sample):
     for value in sample:
         sum_squared_devs += (value - sample_mean) * (value - sample_mean)
 
-    return numpy.sqrt(sum_squared_devs / (len(sample) - 1))
+    return np.sqrt(sum_squared_devs / (len(sample) - 1))
 
 # readable code:
 #   meaningful variable names
