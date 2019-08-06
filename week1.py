@@ -167,7 +167,7 @@ for f in filenames:
     ave_plot = plt.plot(fig_ave)
     plt.show() # why is this necessary?
 
-## Challenge: Write a comment for each line of code in the following script. Which data files are suspicious?
+## Challenge: Add comments to explain the code in exercises/week1_example.py. Which data files are suspicious?
 import glob
 import numpy
 import matplotlib.pyplot as plt
