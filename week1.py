@@ -102,18 +102,18 @@ numpy.mean(data, axis=0).shape # 40 values, this is number of days
 
 #### Visualizing data ####
 
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 %matplotlib inline
-image = matplotlib.pyplot.imshow(data) # im is image, 2D raster
-matplotlib.pyplot.show() # not always needed; shortcut allowed because of interface/interpreter
-matplotlib.pyplot.imshow(data) # another shortcut!
+image = plt.imshow(data) # im is image, 2D raster
+plt.show() # not always needed; shortcut allowed because of interface/interpreter
+plt.imshow(data) # another shortcut!
 
 # plot inflammation over time as average across all patients
 ave_inflammation = numpy.mean(data, axis=0)
-matplotlib.pyplot.plot(ave_inflammation)
+plt.plot(ave_inflammation)
 
 ## Challenge: using one line of code, print the maximum inflammation across all patients
-matplotlib.pyplot.plot(numpy.max(data, axis=0))
+plt.plot(numpy.max(data, axis=0))
 
 #### Repeating actions with loops ####
 
@@ -164,13 +164,13 @@ for f in filenames:
     data = numpy.loadtxt(fname=f, delimiter=",")
 
     fig_ave = numpy.mean(data, axis=0)
-    ave_plot = matplotlib.pyplot.plot(fig_ave)
-    matplotlib.pyplot.show() # why is this necessary?
+    ave_plot = plt.plot(fig_ave)
+    plt.show() # why is this necessary?
 
 ## Challenge: Write a comment for each line of code in the following script. Which data files are suspicious?
 import glob
 import numpy
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 filenames = filenames[0:3]
@@ -179,7 +179,7 @@ for f in filenames:
 
     data = numpy.loadtxt(fname=f, delimiter=",")
 
-    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+    fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
     axes2 = fig.add_subplot(1, 3, 2)
@@ -195,25 +195,25 @@ for f in filenames:
     axes3.plot(numpy.min(data, axis=0))
 
     fig.tight_layout()
-    matplotlib.pyplot.show()
+    plt.show()
 
 ## Challenge: Plot the difference between the average of the first dataset and the average of the second dataset, i.e., the difference between the leftmost plot of the first two figures.
 import glob
 import numpy
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 
 data0 = numpy.loadtxt(fname=filenames[0], delimiter=",")
 data1 = numpy.loadtxt(fname=filenames[1], delimiter=",")
 
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+fig = plt.figure(figsize=(10.0, 3.0))
 
-matplotlib.pyplot.ylabel("Difference in average")
-matplotlib.pyplot.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
+plt.ylabel("Difference in average")
+plt.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
 
 fig.tight_layout()
-matplotlib.pyplot.show()
+plt.show()
 
 #### Wrapping up ####
 
