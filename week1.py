@@ -117,8 +117,36 @@ plt.imshow(data) # another shortcut!
 ave_inflammation = np.mean(data, axis=0)
 plt.plot(ave_inflammation)
 
-## Challenge: using one line of code, print the maximum inflammation across all patients
+## Challenge: plot the maximum and minimum inflammation across all patients
 plt.plot(np.max(data, axis=0))
+plt.plot(np.min(data, axis=0))
+
+#### Grouping plots ####
+
+# we can plot multiple figures in the same plot as subplots/panels
+
+## Challenge: Add comments to explain the code in exercises/week1_example1.py
+
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 3, 1)
+axes2 = fig.add_subplot(1, 3, 2)
+axes3 = fig.add_subplot(1, 3, 3)
+
+axes1.set_ylabel('average')
+axes1.plot(numpy.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(numpy.max(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.plot(numpy.min(data, axis=0))
+
+fig.tight_layout()
+
+matplotlib.pyplot.show()
 
 #### Repeating actions with loops ####
 
@@ -172,7 +200,7 @@ for f in filenames:
     ave_plot = plt.plot(fig_ave)
     plt.show() # why is this necessary?
 
-## Challenge: Add comments to explain the code in exercises/week1_example.py. Which data files are suspicious?
+## Challenge: Add comments to explain the code in exercises/week1_example2.py. Which data files are suspicious?
 import glob
 import numpy as np
 import matplotlib.pyplot as plt
