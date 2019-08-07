@@ -131,10 +131,15 @@ print(np.mean(data, axis=1))
 
 #### Visualizing data ####
 
-%matplotlib inline # for notebooks
-image = plt.imshow(data) # im is image, 2D raster
-plt.show() # not always needed; shortcut allowed because of interface/interpreter
-plt.imshow(data) # another shortcut!
+# load package
+import matplotlib.pyplot as plt
+
+# for notebooks (sometimes)
+%matplotlib inline
+# % is an iPython magic function, only valid in notebooks
+
+# create heatmap pf data (blue is low value, yellow is high)
+plt.imshow(data) # im is image, this is shortcut allowed by interfaces
 
 # plot inflammation over time as average across all patients
 ave_inflammation = np.mean(data, axis=0)
@@ -149,15 +154,24 @@ plt.plot(np.min(data, axis=0))
 # we can plot multiple figures in the same plot as subplots/panels
 
 ## Challenge: Add comments to explain the code in exercises/week1_example1.py
+# share link to GitHub in HackMD
 
-data = np.loadtxt(fname='inflammation-01.csv', delimiter=',')
+# load libraries
+import numpy as np
+import matplotlib.pyplot as plt
 
+# import data
+data = np.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
+
+# create space in which to place plot
 fig = plt.figure(figsize=(10.0, 3.0))
 
+# place each subplot: total rows of subplots, total columns of subplots, which subplot is this (left-to-right, top-to-bottom)
 axes1 = fig.add_subplot(1, 3, 1)
 axes2 = fig.add_subplot(1, 3, 2)
 axes3 = fig.add_subplot(1, 3, 3)
 
+# title axes for each subplot
 axes1.set_ylabel('average')
 axes1.plot(np.mean(data, axis=0))
 
@@ -167,8 +181,10 @@ axes2.plot(np.max(data, axis=0))
 axes3.set_ylabel('min')
 axes3.plot(np.min(data, axis=0))
 
+# spread out graphs more
 fig.tight_layout()
 
+# show plot (required if not running interactively)
 plt.show()
 
 #### Repeating actions with loops ####
@@ -210,7 +226,6 @@ for f in filenames:
     print("shape of", f, ":", data.shape) # more informative print statement
 
 # plot average inflammation for each file in a separate plot
-
 filenames = sorted(glob.glob("data/inflammation*.csv"))
 for f in filenames:
     print(f)
