@@ -10,11 +10,13 @@
 #### Welcome ####
 
 # instructor introduction
+# sign in using link on HackMD page
 # overview of fredhutch.io
-# overview course philosophy, how to stay engaged
+# overview course philosophy
+#   designed for researchers who have some experience with Python but would like to improve robustness of code
+#   follow along with coding activities, try the challenges
 # pre-requisites: intro to Python (basic syntax including variables and functions, importing data, data types and structures, subsetting data)
 # learner introductions and motivation
-# sign in
 # course objectives: create fully documented and automated workflows to perform data analysis tasks (loops, conditionals, functions, debugging)
 
 #### Objectives ####
@@ -25,6 +27,28 @@
 #   plotting with matplotlib
 #   working with mutliple files
 #   for loops to repeat tasks
+
+#### Getting set up ####
+
+# an overview of IDEs
+#   there are advantages and disadvantages to each programming approach
+#   Jupyter notebooks are sufficient for this course
+#   other types of interfaces are available: Atom + Hydrogen, VS Code, Spyder, etc
+#   instructor will use Atom because it splits the difference between a notebook and other interfaces
+#   notebooks may be insufficient for some practices
+#   python scripts are an alternative way to document code
+#   can export scripts as notebooks, and notebooks to scripts
+# using Atom
+#   can be used for other programming languages (text editor)
+#   need to have python previous installed
+#   requires Hydrogen to interact with Python
+
+# set up project
+#   create new directory to hold class materials
+#   create new script, week1.py (or notebook, as case may be)
+#   .py suffix is required for Atom to interpret as python code
+#   use shift + control + p then type hydrogen for help using interface
+#   execute code by holding down shift and pressing enter
 
 #### Review of pre-requisites and loading data ####
 
