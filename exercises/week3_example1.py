@@ -1,4 +1,4 @@
-# Example 1
+import numpy as np
 
 def s(p):
     a=0
@@ -8,4 +8,4 @@ def s(p):
     d=0
     for v in p:
         d+=(v-m)*(v-m)
-    return numpy.sqrt(d/(len(p)-1))
+    return np.sqrt(d/(len(p)-1))
