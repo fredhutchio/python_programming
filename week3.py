@@ -6,11 +6,9 @@
 
 # review previous week's objectives
 # Today:
-#   testing and validating complex functions
-#   including help documentation within a function
-#   defining defaults for a function
-#   applying readable code convention to functions
+#   writing robust functions
 #   identify and correct common errors reported by Python
+#   use assertions in defensive programming and assertions to validate code
 
 ## Challenge: what will be printed if you run this code?
 a = 3
@@ -81,16 +79,23 @@ def offset_mean(data, target_mean_value):
 # view help documentation
 help(offset_mean)
 
-# docstring; triple quotes aren't necessary, but allow us to break into separate lines (and add example)
+# docstring; triple quotes aren't necessary, but allow us to break into separate lines (and add input, output, example)
 def offset_mean(data, target_mean_value):
     '''Return a new array containing the original data
        with its mean offset to match the desired value.
-    Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
+       Input: offset_mean(original_data_array)
+       Output: offset_data_array
+       Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
     return (data - np.mean(data)) + target_mean_value
 help(offset_mean)
 
 ## Challenge: given the following function (written in last week's class), add a docstring
 def fahr_to_celsius(temp):
+    '''Returns temperature in celsius from
+        fahrenheit input.
+        Input: fahr_to_celsius(temp_in_fahr)
+        Output: temp_in_celsius
+        Example: fahr_to_celsius(0) => 32'''
     return ((temp - 32) * (5/9))
 
 #### Defining defaults ####
@@ -105,7 +110,7 @@ np.loadtxt("data/inflammation-01.csv", ",")
 def offset_mean(data, target_mean_value=0.0):
     '''Return a new array containing the original data with its mean offset to match the
        desired value (0 by default).
-    Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
+       Example: offset_mean([1, 2, 3], 0) => [-1, 0, 1]'''
     return (data - np.mean(data)) + target_mean_value
 
 # can still call function with two arguments
@@ -149,7 +154,7 @@ def numbers(one, two=2, three, four=4):
 print(numbers(1, three=3))
 # answer: one must be defined as an input since it does not have a default value
 
-## Challenge: what does the following code display when run?
+## Challenge (optional): what does the following code display when run?
 def func(a, b=3, c=6):
     print('a: ', a, 'b: ', b, 'c:', c)
 
@@ -159,6 +164,7 @@ func(-1, 2)
 
 #### Readable functions ####
 
+# what does the following code do? What helps in Example 2?
 # show examples in exercises/week3_example*.py:
 
 # Example 1
@@ -189,8 +195,6 @@ def std_dev(sample):
 # readable code:
 #   meaningful variable names
 #   blank spaces
-
-## Challenge: Revise a function you wrote for one of the previous exercises to try to make the code more readable. Then, collaborate with one of your neighbors to critique each other’s functions and discuss how your function implementations could be further improved to make them more readable.
 
 #### Errors and Exceptions ####
 
@@ -252,9 +256,6 @@ print("The count is:", count)
 ## Index errors
 # accessing an item in a container that doesn't exist
 letters = ['a', 'b', 'c']
-print("Letter #1 is", letters[0])
-print("Letter #2 is", letters[1])
-print("Letter #3 is", letters[2])
 print("Letter #4 is", letters[3])
 
 ## File errors
@@ -284,6 +285,70 @@ def print_friday_message():
     print_message("Friday")
 
 print_friday_message()
+
+#### Defensive programming ####
+
+# are we getting the right answer?
+#   Write programs that check their own operation.
+#   Write and run tests for widely-used functions.
+#   Make sure we know what “correct” actually means.
+
+# assume mistakes will happen and guard against them (defensive programming)
+
+## Assertions
+
+# assertions: statement that something must be true at a certain point in a program
+numbers = [1.5, 2.3, 0.7, -0.001, 4.4]
+total = 0.0
+for n in numbers:
+    assert n > 0.0, 'Data should only contain positive values'
+    total += n
+print('total is:', total)
+
+# types of assertions:
+#   precondition is something that must be true at the start of a function in order for it to work correctly.
+#   postcondition is something that the function guarantees is true when it finishes.
+#   invariant is something that is always true at a particular point inside a piece of code.
+
+# assertions in action: start with code in week3_example4.py
+def normalize_rectangle(rect):
+    '''Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.
+    Input should be of the format (x0, y0, x1, y1).
+    (x0, y0) and (x1, y1) define the lower left and upper right corners
+    of the rectangle, respectively.'''
+    assert len(rect) == 4, 'Rectangles must contain 4 coordinates' # precondition
+    x0, y0, x1, y1 = rect
+    assert x0 < x1, 'Invalid X coordinates' # precondition
+    assert y0 < y1, 'Invalid Y coordinates' # precondition
+
+    dx = x1 - x0
+    dy = y1 - y0
+    if dx > dy:
+        scaled = float(dx) / dy # error is here, should be float(dy) / dx
+        upper_x, upper_y = 1.0, scaled
+    else:
+        scaled = float(dx) / dy
+        upper_x, upper_y = scaled, 1.0
+
+    assert 0 < upper_x <= 1.0, 'Calculated upper X coordinate invalid' # postcondition
+    assert 0 < upper_y <= 1.0, 'Calculated upper Y coordinate invalid' # postcondition
+
+    return (0, 0, upper_x, upper_y)
+
+# preconditions: add preconditions to function from week4_example1.py
+print(normalize_rectangle( (0.0, 1.0, 2.0) )) # missing the fourth coordinate
+print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) )) # X axis inverted
+
+# postconditions: add postconditions to function from week4_example1.py
+print(normalize_rectangle( (0.0, 0.0, 1.0, 5.0) )) # normalizing a rectangle that is taller than it is wide seems OK
+print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) )) # assertion triggered by rectangle wider than tall
+# this should work! re-check code to see error specified above
+
+# assertions help us:
+#   detect errors and debug code
+#   understand programs
+# "fail early, fail often"
+# "turn bugs into assertions or tests"
 
 #### Wrapping up ####
 

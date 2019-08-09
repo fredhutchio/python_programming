@@ -1,5 +1,3 @@
-## Example 1: applying assertions
-
 def normalize_rectangle(rect):
     '''Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.
     Input should be of the format (x0, y0, x1, y1).
