@@ -64,7 +64,7 @@ elif 4 < 5:
 # C gets printed because the first two conditions, 4 > 5 and 4 == 5, are not true, but 4 < 5 is true.
 
 # checking for problems in inflammation data
-import glob
+import glob # we'll use this later
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -74,7 +74,8 @@ data = np.loadtxt(fname="data/inflammation-01.csv", delimiter=",")
 max_inflammation_0 = np.max(data, axis=0)[0]
 max_inflammation_20 = np.max(data, axis=0)[20]
 
-# check if max equals day number (indicating error in data entry)
+# we suspect there may be a mistake in data entry (day number accidentally entered as inflammation value)
+# check if max equals day number
 if max_inflammation_0 == 0 and max_inflammation_20 == 20:
     print("Suspicious looking maxima!")
 
@@ -97,14 +98,13 @@ else:
 
 ## Challenge:
 # Write a loop that counts the number of vowels in a character string.
-# Test it on a few individual words and full sentences.
-# Once you are done, compare your solution to your neighbor’s. Did you make the same decisions about how to handle the letter ‘y’ (which some people think is a vowel, and some do not)?
+# Test it on the sentence "Mary had a little lamb."
 vowels = "aeiouAEIOU"
 sentence = "Mary had a little lamb."
 count = 0
 for char in sentence:
     if char in vowels:
-        count += 1
+        count += 1 # same as count = count + 1
 
 print("The number of vowels in this string is " + str(count))
 
@@ -205,7 +205,8 @@ for f in filenames[:3]:
     analyze(f)
     detect_problems(f)
 
-## Challenge: If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
+## Challenge: Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
+# Hint:  If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. 
 def outer(input_string):
     return input_string[0] + input_string[-1]
 
