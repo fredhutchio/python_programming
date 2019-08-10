@@ -128,12 +128,14 @@ zipData.extractall()
 #   interpreter directly interacts with python code
 #   command line accesses bash/unix commands and programs
 # demo running python from other interfaces
+
+# how do we run command line programs?
 # accessing command line:
 #   Mac: terminal
 #   Windows: Anaconda prompt
 #   alternatively, run all commands from interpreter with ! in front, which indicates the following is a command line, rather than interpreted by python
 
-# print average inflammation per patient for a given file
+# print average inflammation per patient for a given file (we don't need to look in files now, just know how to use them)
 !python code/readings_04.py --mean data/inflammation-01.csv
 
 # look at the minimum of first four lines
@@ -142,22 +144,24 @@ zipData.extractall()
 # max inflammation of several files
 python code/readings_04.py --max data/inflammation-*.csv
 
-# Our scripts should do the following:
+# writing command-line scripts:
 #   If no filename is given on the command line, read data from standard input.
 #   If one or more filenames are given, read data from them and report statistics for each file separately.
-#   Use the --min, --mean, or --max flag to determine what statistic to print.
+#   Use the flags to determine how script is run
 
 # create a new text file (in text editor) called sys_version.py
 import sys # import system library
 print('version is', sys.version) # tell us what version of python we're running
+# save file and go back to this week's class script
 
 # run program
 !python sys_version.py
-#!python code//sys_version.py # in teaching materials
+#!python code/sys_version.py # in teaching materials, for backup
 
-# another file called argv_list.py
+# create another file called argv_list.py
 import sys
 print('sys.argv is', sys.argv)
+# argv stands for argument values, a list of arguments (on command line) that is used to run script
 
 # run program
 !python argv_list.py
