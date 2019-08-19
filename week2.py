@@ -147,19 +147,19 @@ def fence(original, wrapper):
 
 print(fence("name", "*"))
 
-## Challenge: What does the following piece of code display when run — and why?
-f = 0
-k = 0
+## Challenge: what will be printed if you run this code?
+a = 3
+b = 7
 
-def f2k(f):
-    k = ((f-32)*(5.0/9.0)) + 273.15
-    return k
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
 
-f2k(8)
-f2k(41)
-f2k(32)
+swap(a, b)
 
-print(k)
+print(a, b)
+## Challenge: how could you alter this to print the results of swap?
 
 # create function to analyze files with data viz
 def analyze(filename):
@@ -206,7 +206,7 @@ for f in filenames[:3]:
     detect_problems(f)
 
 ## Challenge: Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this: "print(outer('helium'))" and you should get "hm"
-# Hint:  If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. 
+# Hint:  If the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last.
 def outer(input_string):
     return input_string[0] + input_string[-1]
 

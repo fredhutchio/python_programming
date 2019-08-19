@@ -10,20 +10,6 @@
 #   identify and correct common errors reported by Python
 #   use assertions in defensive programming and assertions to validate code
 
-## Challenge: what will be printed if you run this code?
-a = 3
-b = 7
-
-def swap(a, b):
-    temp = a
-    a = b
-    b = temp
-
-swap(a, b)
-
-print(a, b)
-## Challenge: how could you alter this to print the results of swap?
-
 #### Testing and documenting ####
 
 # validating that a function works as expected is an important step in coding
