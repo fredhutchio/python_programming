@@ -5,6 +5,8 @@
 # review previous week's objectives
 # Today:
 #   apply test-driven development to creating new functions
+#   identify strategies for debugging code
+#   create and use command line programs written in Python
 
 ## Test driven development
 
