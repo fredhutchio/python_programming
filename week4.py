@@ -38,6 +38,7 @@ assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0) # th
 assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
 # fail with an error message, produce a special value like (0.0, 0.0) to signal that there’s no overlap, or something else?
 # decision: we will return the special value None when there’s no overlap
+# this value means nothing is printed to the screen
 
 # testing for when ranges touch at endpoints?
 assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
@@ -225,7 +226,7 @@ print('sys.argv is', sys.argv)
 # (i.e., no action is specified and no filenames are given),
 # it prints a message explaining how it should be used.
 
-## Challenge: modify the program so that if no flag is given it displays the mean 
+## Challenge: modify the program so that if no flag is given it displays the mean
 
 # exporting Jupyter notebooks as script
 #   can use drop down menu, but may not preserve line breaks
