@@ -138,13 +138,13 @@ zipData.extractall()
 #   alternatively, run all commands from interpreter with ! in front, which indicates the following is a command line, rather than interpreted by python
 
 # print average inflammation per patient for a given file (we don't need to look in files now, just know how to use them)
-!python code/readings_04.py --mean data/inflammation-01.csv
+!python code/readings_09.py --mean data/inflammation-01.csv
 
 # look at the minimum of first four lines
-!head -4 data/inflammation-01.csv | python code/readings_06.py --min
+!head -4 data/inflammation-01.csv | python code/readings_09.py --min
 
 # max inflammation of several files
-python code/readings_04.py --max data/inflammation-*.csv
+!python code/readings_09.py --max data/inflammation-*.csv
 
 # writing command-line scripts:
 #   If no filename is given on the command line, read data from standard input.
@@ -152,6 +152,7 @@ python code/readings_04.py --max data/inflammation-*.csv
 #   Use the flags to determine how script is run
 
 # create a new text file (in text editor) called sys_version.py
+# save in project directory (backup downloaded in code/)
 import sys # import system library
 print('version is', sys.version) # tell us what version of python we're running
 # save file and go back to this week's class script
@@ -160,7 +161,7 @@ print('version is', sys.version) # tell us what version of python we're running
 !python sys_version.py
 #!python code/sys_version.py # in teaching materials, for backup
 
-# create another file called argv_list.py
+# create another file called argv_list.py (backup included in code/)
 import sys
 print('sys.argv is', sys.argv)
 # argv stands for argument values, a list of arguments (on command line) that is used to run script
