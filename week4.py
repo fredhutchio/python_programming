@@ -138,13 +138,13 @@ zipData.extractall()
 #   alternatively, run all commands from interpreter with ! in front, which indicates the following is a command line, rather than interpreted by python
 
 # print average inflammation per patient for a given file (we don't need to look in files now, just know how to use them)
-!python code/readings_09.py --mean data/inflammation-01.csv
+!python code/readings_06.py --mean data/inflammation-01.csv
 
 # look at the minimum of first four lines
-!head -4 data/inflammation-01.csv | python code/readings_09.py --min
+!head -4 data/inflammation-01.csv | python code/readings_06.py --min
 
 # max inflammation of several files
-!python code/readings_09.py --max data/inflammation-*.csv
+!python code/readings_06.py --max data/inflammation-*.csv
 
 # writing command-line scripts:
 #   If no filename is given on the command line, read data from standard input.
@@ -172,6 +172,60 @@ print('sys.argv is', sys.argv)
 # run with multiple arguments
 !python argv_list.py first second third
 #!python code/argv_list.py first second third
+
+## how do we develop the most robust command-line python script possible?
+
+## readings_01.py: prints per-patient mean of a single data file
+# write a function that outlines the implementation, by convention this is called main
+# script name comes from sys.argv[0], file process comes from sys.argv[1]
+!python code/readings_01.py data/inflammation-01.csv
+# no output, because we've defined a function but haven't called it
+
+## readings_02.py: add a call to main
+!python code/readings_02.py data/inflammation-01.csv
+# running vs importing: we don’t expect anything to happen when we import a file,
+# whereas when running a script, we expect to see output printed to the console
+# When importing Python file, __name__ is the name of that file
+# e.g., when importing readings.py, __name__ is 'readings'
+# when running script in bash, __name__ is always set to '__main__' in that script
+# determines if file is being imported or run as a script
+
+# note: we are doing fairly rudimentary handling of parameters
+# a better method is argparse: https://docs.python.org/3/howto/argparse.html
+
+## readings_03.py: handling multiple files
+!python code/readings_03.py data/small-01.csv data/small-02.csv
+# use data subsets to ensure we're getting the correct output
+
+## readings_04.py: adding flags (--min, --mean, --max)
+!python code/readings_04.py --max data/small-01.csv
+# this works, but isn't great
+#   main too large (difficult to read)
+#   silent failure: it will run even if we don't provide both arguments
+# example:
+!python code/readings_04.py data/small-01.csv
+# should check if we're using one of the three recognized flags
+
+## readings_05.py: split into two functions, check for appropriate flag input
+!python code/readings_05.py data/small-01.csv
+
+# handling standard input
+# look at and run example script
+!python code/count_stdin.py < data/small-01.csv
+# can't run without < because program is expecting from standard in!
+# if running, use "Interrupt kernel" option
+
+## readings_06.py: allow input from standard in if no filenames are given
+!python code/readings_06.py --mean < data/small-01.csv
+
+## Challenge: we often see aliases or shorter flags, like -n, -m, and -x instead of --min, --mean, and --max
+# rewrite the program so that it uses these flags. Is it easier to read?
+
+## Challenge: modify the programs so that if no parameters are given
+# (i.e., no action is specified and no filenames are given),
+# it prints a message explaining how it should be used.
+
+## Challenge: modify the program so that if no flag is given it displays the mean 
 
 # exporting Jupyter notebooks as script
 #   can use drop down menu, but may not preserve line breaks
