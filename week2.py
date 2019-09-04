@@ -9,6 +9,7 @@
 #   make choices using conditional statements: if, elif, else
 #   evaluate expressions containing and and or
 #   combine for loops and conditional statements
+#   create functions
 
 # link to materials with diagram and full text of exercises: http://swcarpentry.github.io/python-novice-inflammation/06-func/index.html
 
