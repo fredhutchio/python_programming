@@ -7,7 +7,7 @@ This page is for easy access to links we'll use during class. You don't need to 
 
 **Sign in to each class meeting** [here](https://goo.gl/forms/j4MbWJuPoIYeJET12)
 
-You should have Python installed on your computer, as well as a preferred interface for writing Python code. You can view some recommendations [here](https://github.com/fredhutchio/fredhutch.io/blob/gh-pages/software.md#python). Your instructor will be using Atom (with separately installed Hydrogen and Python) for this course.
+You should have Python installed on your computer, as well as a preferred interface for writing Python code. You can view some recommendations [here](http://www.fredhutch.io/resources/#intermediate-python-programming). Your instructor will be using Atom (with separately installed Hydrogen and Python) for this course.
 
 Complete class notes [here](https://github.com/fredhutchio/python_programming)
 
