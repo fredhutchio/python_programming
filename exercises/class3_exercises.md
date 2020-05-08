@@ -1,6 +1,8 @@
 # Intermediate Python: Programming
 # Class 3 Exercises
 
+import numpy as np
+
 ## Example 1
 ```
 def s(p):
@@ -27,5 +29,4 @@ def std_dev(sample):
     for value in sample:
         sum_squared_devs += (value - sample_mean) * (value - sample_mean)
 
-    return numpy.sqrt(sum_squared_devs / (len(sample) - 1))
-```
+    return np.sqrt(sum_squared_devs / (len(sample) - 1))
