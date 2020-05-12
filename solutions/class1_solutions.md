@@ -1,122 +1,145 @@
 # Intermediate Python: Programming
-# Class 1 Exercises
+# Class 1 Solutions
 
-## Challenge: import small-01.csv and determine if the type or shape of data differ from data object
+## Challenge small
 
+Import `small-01.csv` (included in your `data/` directory) and determine if these data differ in type or shape from our existing data object.
 ```
-small_data = numpy.loadtxt(fname="data/small-01.csv", delimiter=",")
+small_data = np.loadtxt(fname="data/small-01.csv", delimiter=",")
 print(small_data.shape)
 print(small_data.dtype)
 type(small_data)
 ```
 
-## Challenge: find max, min, standard deviation across the entire array data, and print with meaningful print statements
+## Challenge stats
 
+Find the maximum, minimum, and standard deviation across the entire array `data`, reported with meaningful print statements.
 ```
-print("maximum:", numpy.max(data))
-print("minimum:", numpy.min(data))
-print("standard deviation:", numpy.std(data))
-```
-
-## Challenge: using one line of code, print the maximum inflammation across all patients
-
-```
-matplotlib.pyplot.plot(numpy.max(data, axis=0))
+print("maximum:", np.max(data))
+print("minimum:", np.min(data))
+print("standard deviation:", np.std(data))
 ```
 
-## Challenge: Look at the code below and include a comment for each new function or argument you see.
+## Challenge data
 
+Plot the maximum and minimum inflammation across all patients for `data`. What can you conclude about the validity of the data based on these plots?
 ```
-import numpy
-import matplotlib.pyplot
+plt.plot(np.max(data, axis=0))
+plt.plot(np.min(data, axis=0))
+```
 
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+## Challenge comment
 
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+Look at the code below and include a comment for each new function or argument you see.
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
+
+fig = plt.figure(figsize=(10.0, 3.0))
 
 axes1 = fig.add_subplot(1, 3, 1)
 axes2 = fig.add_subplot(1, 3, 2)
 axes3 = fig.add_subplot(1, 3, 3)
 
 axes1.set_ylabel('average')
-axes1.plot(numpy.mean(data, axis=0))
+axes1.plot(np.mean(data, axis=0))
 
 axes2.set_ylabel('max')
-axes2.plot(numpy.max(data, axis=0))
+axes2.plot(np.max(data, axis=0))
 
 axes3.set_ylabel('min')
-axes3.plot(numpy.min(data, axis=0))
+axes3.plot(np.min(data, axis=0))
 
 fig.tight_layout()
 
-matplotlib.pyplot.show()
+plt.show()
 ```
 
-- `matplotlib.pyplot.figure()` initializes the space into which the plots will be placed,
+- `plt.figure()` initializes the space into which the plots will be placed,
 parameter `figsize` specifies the size of this space.
 - `add_subplot` places each subplot into the figure; the first parameter indicates the total rows for subplots, the second paramter indicates columns of subplots, and the third parameter specifies the plot position (left-to-right, top-to-bottom)
 - `axes1`, `axes2`, and `axes3` are variables storing each subplot
 - `set_xlabel()` adds axis labels
 - `fig.tight_layout()` specifies the relative arrangement of subplots
 
+## Challenge vowels
 
-## Challenge: Are all 12 data files the same shape? (hint: write a for loop)
+Given the following code, replace `ACTION` with code that will allow you to count the number of vowels.
+```
+length = 0
+for vowel in "aeiou":
+    length = length + 1
+print("There are", length, "vowels")
 
+# alternate answer
+length = 0
+for vowel in "aeiou":
+    length += 1
+print("There are", length, "vowels")
+```
+
+## Challenge files
+
+Do all of the `data/inflammation*.csv` files contain the same amount of data (i.e., same number of elements)? Write a for loop that assesses the shape of each file.
 ```
 for f in filenames:
     data = numpy.loadtxt(fname = f, delimiter = ",")
-    print("shape of", f, ":", data.shape) # more informative print statement
+    print("shape of", f, ":", data.shape) #
 ```
 
-## Challenge: Write a comment for each line of code in the following script. Which data files are suspicious?
+## Challenge show
 
+In this lesson, we've noted that `plt.show()` may not be necessary for plots to appear using some Python interpreters. Try removing this line from the for loop and view the output. How do you explain the results?
 ```
 import glob
-import numpy
-import matplotlib.pyplot
+import numpy as np
+import matplotlib.pyplot as plt
 
 filenames = sorted(glob.glob("data/inflammation*.csv"))
-filenames = filenames[0:3]
-for f in filenames:
-    print(f)
+for filename in filenames:
+    print(filename)
 
-    data = numpy.loadtxt(fname=f, delimiter=",")
+    data = np.loadtxt(fname=filename, delimiter=',')
 
-    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+    fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
     axes2 = fig.add_subplot(1, 3, 2)
     axes3 = fig.add_subplot(1, 3, 3)
 
-    axes1.set_ylabel("average")
-    axes1.plot(numpy.mean(data, axis=0))
+    axes1.set_ylabel('average')
+    axes1.plot(np.mean(data, axis=0))
 
-    axes2.set_ylabel("max")
-    axes2.plot(numpy.max(data, axis=0))
+    axes2.set_ylabel('max')
+    axes2.plot(np.max(data, axis=0))
 
-    axes3.set_ylabel("min")
-    axes3.plot(numpy.min(data, axis=0))
+    axes3.set_ylabel('min')
+    axes3.plot(np.min(data, axis=0))
 
     fig.tight_layout()
-    matplotlib.pyplot.show()
+    plt.show()
 ```
+Without that line of code,
+the
 
-## Challenge: Plot the difference between the average of the first dataset and the average of the second dataset, i.e., the difference between the leftmost plot of the first two figures.
+## Challenge first three
+
+How could you modify the code in the last challenge so only the first three data files are visualized?
+
+Add the following line of code:
 ```
-import glob
-import numpy
-import matplotlib.pyplot
-
+...
 filenames = sorted(glob.glob("data/inflammation*.csv"))
-
-data0 = numpy.loadtxt(fname=filenames[0], delimiter=",")
-data1 = numpy.loadtxt(fname=filenames[1], delimiter=",")
-
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
-
-matplotlib.pyplot.ylabel("Difference in average")
-matplotlib.pyplot.plot(numpy.mean(data0, axis=0) - numpy.mean(data1, axis=0))
-
-fig.tight_layout()
-matplotlib.pyplot.show()
+filenames = filenames[0:3]
+for filename in filenames:
+...
+```
+Alternatively,
+modify the for loop:
+```
+...
+for filename in filenames[0:3]
+...
 ```
