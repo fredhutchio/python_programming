@@ -1,4 +1,4 @@
-# Programming in Python
+# Intermediate Python: Programming
 
 ## Description
 
@@ -10,14 +10,14 @@ These materials are based largely on Software Carpentry's [Programming with Pyth
 
 ## Schedule
 
-* Week 1: Review of pre-requisites, working with arrays, repeating actions with loops
-* Week 2: Flow control with conditional statements, analyzing multiple files, creating functions
-* Week 3: Testing, documenting, and developing more robust functions
-* Week 4: Test driven development, debugging, and writing/using command line Python programs
+* [Class 1](class1.ipynb): Review of pre-requisites, working with arrays, repeating actions with loops
+* [Class 2](class2.ipynb): Flow control with conditional statements, analyzing multiple files, creating functions
+* [Class 3](class3.ipynb): Testing, documenting, and developing more robust functions
+* [Class 4](class4.ipynb): Test driven development, debugging, and writing/using command line Python programs
 
 ## Resources
 
-* Each week's materials are described in the script prefaced with the number of the week.
+* Each week's materials are described in the Jupyter Notebook prefaced with the class number (`*.ipynb`).
 * `exercises/` includes a file for each week representing both the aggregated in-class exercises as well as additional
 supplemental exercises for practice
 * `solutions/` includes the solutions for all files in `exercises/`
