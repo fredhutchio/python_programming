@@ -61,7 +61,7 @@ plt.show()
 parameter `figsize` specifies the size of this space.
 - `add_subplot` places each subplot into the figure; the first parameter indicates the total rows for subplots, the second paramter indicates columns of subplots, and the third parameter specifies the plot position (left-to-right, top-to-bottom)
 - `axes1`, `axes2`, and `axes3` are variables storing each subplot
-- `set_xlabel()` adds axis labels
+- `set_ylabel()` adds axis labels (there is also an equivalent for the x axis)
 - `fig.tight_layout()` specifies the relative arrangement of subplots
 
 ## Challenge vowels
