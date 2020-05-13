@@ -126,9 +126,33 @@ print(k)
 ```
 The `k` inside the function is a separate variable from the one initialized before the function.
 
+## Challenge swap
+
+Explain the result of the following code:
+```
+a = 3
+b = 7
+
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
+
+swap(a, b)
+
+print(a, b)
+
+print(swap(a,b))
+```
+
+`a` and `b` are defined locally within the function,
+and these are independent of the original variables created.
+Moreover, no values are returned inside the function,
+so the last line has no output to report.
+
 ## Challenge outer
 
-If the variable `s` refers to a string, then `s[0]`` is the string’s first character and `s[-1]`` is its last. Write a function called `outer` that returns a string made up of just the first and last characters of its input. A call to your function should look like this: 
+If the variable `s` refers to a string, then `s[0]` is the string’s first character and `s[-1]` is its last. Write a function called `outer` that returns a string made up of just the first and last characters of its input. A call to your function should look like this:
 
 - input: `print(outer('helium'))`
 - output: `hm`
