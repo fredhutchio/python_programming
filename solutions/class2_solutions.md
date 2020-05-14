@@ -62,7 +62,7 @@ for filename in filenames[0:3]
 Given the following code, what answer (A, B, or C) do you expect to be correct? How would you rewrite the code to get another answer?
 
 ```
-if 4 > 5:
+if 4 < 5:
     print("A")
 elif 4 == 5:
     print("B")
@@ -78,10 +78,14 @@ C gets printed because the first two conditions, 4 > 5 and 4 == 5, are not true,
 - Include the conditional statement in a for loop that counts the number of vowels in a character string (e.g., "Mary had a little lamb.").
 - Test your code on a few individual words and full sentences.
 
+Given the following sentence:
+```
+sentence = "Mary had a little lamb."
+```
+
 One example solution:
 ```
 vowels = "aeiouAEIOU"
-sentence = "Mary had a little lamb."
 count = 0
 for char in sentence:
     if char in vowels:
@@ -91,6 +95,40 @@ print("The number of vowels in this string is " + str(count))
 ```
 Other considerations include whether capitalization was included,
 and if y is included as a vowel.
+
+Other potential solutions:
+```
+vowels = 0
+
+for char in sentence:
+    if char in ("a", "e", "i", "o", "u", "y"):
+        vowels = vowels + 1
+    elif char in ("A", "E", "I", "O", "U", "Y"):
+        vowels = vowels + 1
+    else:
+        vowels = vowels
+print(vowels)
+```
+
+```
+count = 0
+
+for char in sentence:
+    print(char)
+    if char in ("a", "e", "i", "o", "u", "y", "A", "E", "I", "O", "U", "Y"):
+        count = count + 1
+print("There are ", count, " vowels")
+```
+
+```    
+count = 0
+
+for letter in string:
+    for item in "aeiouyAEIOUY":
+        if letter == item:
+            count +=1
+print("There are", count, "vowels in the string:", string)
+```
 
 ## Challenge fence
 
@@ -107,6 +145,30 @@ def fence(original, wrapper):
 
 print(fence("name", "*"))
 ```
+
+## Challenge ice cream
+
+The following code defines and tests a function to list the best and worst flavor of ice cream. Modify the code to improve its readability, and note what other information a user would need to be able to run the code. *Extra:* Explain the difference between the use of `print` and `return` in the output.
+
+```
+def hippopotamus(x,y):
+    foo=["chocolate","vanilla","strawberry"]
+    print(foo[x])
+    return foo[y]
+hippopotamus(1,0)
+```
+
+Modified for readability
+```
+def ice_cream(x,y):
+    flavors=["chocolate",
+            "vanilla",
+            "strawberry"]
+    return flavors[y], flavors[x]
+ice_cream(1,0)
+```
+Information to use this function: "The user should enter the best flavor first and the worst flavor second, where 0=chocolate, 1=vanilla, and 3=strawberry"
+
 ## Challenge f2k
 
 What does the following piece of code display when run — and why?

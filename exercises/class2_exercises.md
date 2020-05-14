@@ -43,7 +43,7 @@ How could you modify the code in the [previous challenge](#challenge-show) so on
 Given the following code, what answer (A, B, or C) do you expect to be correct? How would you rewrite the code to get another answer?
 
 ```
-if 4 > 5:
+if 4 < 5:
     print("A")
 elif 4 == 5:
     print("B")
@@ -72,7 +72,7 @@ Write code to test your two new functions (`analyze` and `detect_problems`).
 
 ## Challenge ice cream
 
-The following code defines and tests a function to list the best and worst flavor of ice cream. Modify the code to improve its readability. *Extra:* Explain the difference between the use of `print` and `return` in the output.
+The following code defines and tests a function to list the best and worst flavor of ice cream. Modify the code to improve its readability, and note what other information a user would need to be able to run the code. *Extra:* Explain the difference between the use of `print` and `return` in the output.
 
 ```
 def hippopotamus(x,y):
