@@ -89,3 +89,15 @@ func(-1, 2)
 ```
 a: -1 b: 2 c: 6
 ```
+
+#### Challenge-pre-post
+
+Suppose you are writing a function called `average` that calculates the average of the numbers in a list. What pre-conditions and post-conditions would you write for it?
+
+```
+# a possible pre-condition:
+assert len(input_list) > 0, 'List length must be non-zero'
+# a possible post-condition:
+assert numpy.min(input_list) <= average <= numpy.max(input_list),
+'Average should be between min and max of input values (inclusive)'
+```
