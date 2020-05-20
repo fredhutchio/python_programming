@@ -28,6 +28,7 @@ Rerun your test after each change you make.
 What other errors do you receive?
 How could you resolve them?
 
+```python
 def range_overlap(ranges):
     '''Return common overlap among a set of [left, right] ranges.'''
     if not ranges: # LAST ASSERTION: no ranges
@@ -39,3 +40,4 @@ def range_overlap(ranges):
     if max_left >= min_right:  # FIRST ASSERTION: no overlap
         return None
     return (max_left, min_right)
+```
