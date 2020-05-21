@@ -2,7 +2,7 @@
 
 ## Description
 
-This four-week course focuses on task automation using Python programming. Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes participants are familiar with all material in Introduction to Python (working in Jupyter notebooks, basic syntax including variables and functions, importing data, data types and structures, subsetting data). At the end of this course, you will be able to create fully documented and automated workflows to perform data analysis tasks.
+This four-class course focuses on task automation using Python programming. Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes participants are familiar with all material in Introduction to Python (working in Jupyter notebooks, basic syntax including variables and functions, importing data, data types and structures, subsetting data). At the end of this course, you will be able to create fully documented and automated workflows to perform data analysis tasks.
 
 These materials are based largely on Software Carpentry's [Programming with Python](http://swcarpentry.github.io/python-novice-inflammation/) materials, Copyright (c) Software Carpentry.
 
@@ -18,8 +18,6 @@ These materials are based largely on Software Carpentry's [Programming with Pyth
 ## Resources
 
 * Each week's materials are described in the Jupyter Notebook prefaced with the class number (`*.ipynb`).
-* `exercises/` includes a file for each week representing both the aggregated in-class exercises as well as additional
-supplemental exercises for practice
-* `solutions/` includes the solutions for all files in `exercises/`
+* `solutions/` includes answers to challenge exercises in the class notebooks
 * `instructors.md` includes useful links mentioned during lessons; additional information about continued learning in R as well as Hutch-specific resources can be found on the [Data Science Wiki](https://sciwiki.fredhutch.org/bioinformatics/prog_overview/)
 * `hackmdio.md` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
