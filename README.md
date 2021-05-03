@@ -10,10 +10,10 @@ These materials are based largely on Software Carpentry's [Programming with Pyth
 
 ## Schedule
 
-* [Class 1](class1.ipynb): Review of pre-requisites, working with arrays, repeating actions with loops (if the link does not load, please try [this one](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/master/class1.ipynb))
-* [Class 2](class2.ipynb): Flow control with conditional statements, analyzing multiple files, creating functions (if the link does not load, please try [this one](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/master/class2.ipynb))
-* [Class 3](class3.ipynb): Testing, documenting, and developing more robust functions (if the link does not load, please try [this one](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/master/class3.ipynb))
-* [Class 4](class4.ipynb): Test driven development, debugging, and writing/using command line Python programs (if the link does not load, please try [this one](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/master/class4.ipynb))
+* [Class 1](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/gh-pages/class1.ipynb): Review of pre-requisites, working with arrays, repeating actions with loops
+* [Class 2](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/gh-pages/class2.ipynb): Flow control with conditional statements, analyzing multiple files, creating functions
+* [Class 3](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/gh-pages/class3.ipynb): Testing, documenting, and developing more robust functions
+* [Class 4](https://nbviewer.jupyter.org/github/fredhutchio/python_programming/blob/gh-pages/class4.ipynb): Test driven development, debugging, and writing/using command line Python programs
 
 ## Resources
 
